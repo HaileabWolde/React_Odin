@@ -1,11 +1,15 @@
 #root {
-  min-height: 100%;
+  font-family: 'Playfair Display', serif;
+
   padding: 2rem;
   display: grid;
    grid-template-columns: 10% 30% 50%;
    gap: 50px;
 }
+h1{
+  font-size: 20px;
+  font-weight: bolder;
+}
 .Cv, .Display{
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
 }

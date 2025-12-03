@@ -5,6 +5,7 @@
     gap: 10px;
 }
 .clearResume, .personalDetails, .educationDetails, .expreienceDetails{
+      background-color: #fff;
      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
 }
@@ -13,5 +14,25 @@
 }
 
 .personalDetails, .educationDetails, .expreienceDetails{
-    min-height: 40%;
+    padding: 2rem 1rem;
+     display: flex;
+    flex-direction: column;
+   gap: 2px;
+}
+.educationNav{
+    display: flex;
+    justify-content: space-between;
+}
+input {
+      padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f3f4f6;
+    border: 2px solid transparent;
+    outline: none;
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+label{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
