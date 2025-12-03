@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import '../styles/Form.css'
-import { FaGraduationCap, FaChevronDown, FaSuitcase, FaTrash   } from 'react-icons/fa';
+import { FaGraduationCap, FaChevronDown, FaChevronUp,  FaSuitcase, FaTrash   } from 'react-icons/fa';
 
 function Form () {
+    const [education, setEducation] = useState(true)
+    const handleEducation = ()=>{
+        setEducation((prev)=> !prev)
+    }
     return (
         <div className="Form">
             <div className='clearResume'>
@@ -36,12 +41,14 @@ function Form () {
                    
             </form>
             <form className='educationDetails'>
-                    <div className='sectionNav'>
-                             <span> <FaGraduationCap size={24} fontWeight={900} /> Graduation</span>
-                             <FaChevronDown/>
-
+                    <div className='sectionNav' onClick={handleEducation}>
+                             <span> <FaGraduationCap size={24} fontWeight={900}  /> Education</span>
+                            {education ? <FaChevronUp /> : <FaChevronDown />} 
                     </div>
-                     <label for="School">
+                    {
+                       education && 
+                        <>
+                        <label for="School">
                     School
                    </label>
                    <input type='text' placeholder='Enter School/University'>
@@ -61,6 +68,10 @@ function Form () {
                    <input type="date" placeholder="endDate"></input>
                   
             
+                        </>
+                    }
+                    
+                 
             </form>
             <form className='expreienceDetails'>
                    <div className='sectionNav'>
