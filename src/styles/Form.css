@@ -10,7 +10,14 @@
   border-radius: 20px;
 }
 .clearResume{
-    min-height: 10%;
+   padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.clearResume>span{
+    color: red;
+    font-weight: 400;
 }
 
 .personalDetails, .educationDetails, .expreienceDetails{
@@ -18,12 +25,20 @@
      display: flex;
     flex-direction: column;
    gap: 2px;
+   cursor: pointer;
 }
-.educationNav{
+.sectionNav{
+    
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
-input {
+span{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+input, textarea {
       padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
