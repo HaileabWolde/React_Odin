@@ -1,11 +1,11 @@
 #root {
-  height: 100%;
+  min-height: 100%;
   padding: 2rem;
   display: grid;
    grid-template-columns: 10% 30% 50%;
-   gap: 70px;
+   gap: 50px;
 }
-.Cv, .Display, .Form{
+.Cv, .Display{
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }

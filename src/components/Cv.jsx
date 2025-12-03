@@ -1,3 +1,4 @@
+import '../styles/Cv.css'
 function CV () {
     return (
         <div className="Cv">
