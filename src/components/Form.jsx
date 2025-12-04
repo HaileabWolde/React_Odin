@@ -1,11 +1,32 @@
 import { useState } from 'react';
 import '../styles/Form.css'
-import { FaGraduationCap, FaChevronDown, FaChevronUp,  FaSuitcase, FaTrash   } from 'react-icons/fa';
+import { FaGraduationCap, FaChevronDown, FaChevronUp,  FaSuitcase, FaTrash, FaPlus} from 'react-icons/fa';
 
+import EducationForm from './Form/EducationForm';
+import PersonalForm from './Form/PersonalForm.JSX';
 function Form () {
-    const [education, setEducation] = useState(true)
+    const [education, setEducation] = useState(true);
+    const [experience, setExperience] = useState(true);
+    const [educationexp, setEducationexp] = useState([]);
+
     const handleEducation = ()=>{
         setEducation((prev)=> !prev)
+    }
+    const handleExerience = ()=>{
+        setExperience((prev)=> !prev)
+    }
+
+    const addEducation = (event)=>{
+        event.preventDefault();
+        setEducationexp(prev=> [
+            ...prev, {
+                School: "",
+                Degree: "",
+                startDate: "",
+                endDate: "",
+                id: crypto.randomUUID()
+            }
+        ])
     }
     return (
         <div className="Form">
@@ -46,60 +67,43 @@ function Form () {
                             {education ? <FaChevronUp /> : <FaChevronDown />} 
                     </div>
                     {
-                       education && 
-                        <>
-                        <label for="School">
-                    School
-                   </label>
-                   <input type='text' placeholder='Enter School/University'>
-                   </input>
-                   <label for="Degree">
-                    Enter Degree/Field of Study
-                   </label>
-                   <input type='text' placeholder='Enter Your Degree'>
-                   </input>
-                   <label for="startDate">
-                    Start Date
-                   </label>
-                   <input type="date" placeholder="startDate"></input>
-                    <label for="endDate">
-                    End Date
-                   </label>
-                   <input type="date" placeholder="endDate"></input>
-                  
-            
-                        </>
+                        educationexp.length > 0  && 
+                       educationexp.map((item)=> {
+                        return (
+                            <EducationForm
+                            key={item.id}
+                             id={item.id}             // <-- important
+                            setEducationexp= {setEducationexp}
+                            School= {item.School}
+                            Degree = {item.Degree}
+                            startDate = {item.startDate}
+                            endDate = {item.endDate}
+
+                            />
+                        )
+                       })
+                    }
+                    {
+                       education &&
+                       <button onClick={addEducation}>
+                        <FaPlus size={24}/>
+                        <p>Add Education</p>
+                       </button> 
+                       
                     }
                     
                  
             </form>
             <form className='expreienceDetails'>
-                   <div className='sectionNav'>
+                   <div className='sectionNav' onClick={handleExerience}>
                            <span> <FaSuitcase size={20} fontWeight={900} /> Expreience</span>
-                             <FaChevronDown/>
+                             {experience ? <FaChevronUp /> : <FaChevronDown />} 
                    </div>
-                    <label for="Company">
-                    Company Name
-                   </label>
-                   <input type='text' placeholder='Enter Company Name'>
-                   </input>
-                   <label for="Position">
-                    Enter Position 
-                   </label>
-                   <input type='text' placeholder='Enter Your Role'>
-                   </input>
-                   <label for="startDate">
-                    Start Date
-                   </label>
-                   <input type="date" placeholder="startDate"></input>
-                    <label for="endDate">
-                    End Date
-                   </label>
-                   <input type="date" placeholder="endDate"></input>
-                   <label for="Description">
-                        Description
-                   </label>
-                  < textarea  rows="5" cols="50"></textarea>
+                   {
+                    experience && 
+                        <PersonalForm/>
+                   }
+                    
                   
             </form>
         </div>
