@@ -8,7 +8,7 @@ function Form () {
     const [education, setEducation] = useState(true);
     const [experience, setExperience] = useState(true);
     const [educationexp, setEducationexp] = useState([]);
-
+    const [personalexp, setPersonalexp] = useState([]);
     const handleEducation = ()=>{
         setEducation((prev)=> !prev)
     }
@@ -27,6 +27,21 @@ function Form () {
                 id: crypto.randomUUID()
             }
         ])
+    }
+    const addExperience = (event)=> {
+         event.preventDefault();
+         console.log(personalexp)
+         setPersonalexp(prev=> [
+            ...prev,{
+                Company: "",
+                Position: "",
+                startDate: "",
+                endDate: "",
+                Description: "",
+                id: crypto.randomUUID()
+            }
+
+         ])
     }
     return (
         <div className="Form">
@@ -100,8 +115,28 @@ function Form () {
                              {experience ? <FaChevronUp /> : <FaChevronDown />} 
                    </div>
                    {
+                    personalexp.length > 0 && 
+                    personalexp.map((item)=> {
+                        return (
+                            <PersonalForm
+                              key={item.id}
+                             id={item.id}     
+                             setPersonalexp= {setPersonalexp}
+                             Company = {item.Company}
+                             Position = {item.Position}
+                             startDate = {item.startDate}
+                             endDate = {item.endDate}
+                             Description = {item.Description}
+                            />
+                        )
+                    })
+                   }
+                   {
                     experience && 
-                        <PersonalForm/>
+                       <button onClick={addExperience}>
+                        <FaPlus size={24}/>
+                        <p>Add Experience</p>
+                       </button>
                    }
                     
                   

@@ -2,7 +2,7 @@ function EducationForm ({id, setEducationexp, School,  Degree, startDate, endDat
      const handleChange = (e)=> {
           const {name, value} = e.target;
           setEducationexp(prev=> prev.map(
-               item => item.id === id ? {...item, [name]: value} : item
+               (item) => item.id === id ? {...item, [name]: value} : item
           ))
      }
 return (
