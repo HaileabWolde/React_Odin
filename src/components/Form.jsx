@@ -30,7 +30,7 @@ function Form () {
     }
     const addExperience = (event)=> {
          event.preventDefault();
-         console.log(personalexp)
+
          setPersonalexp(prev=> [
             ...prev,{
                 Company: "",
@@ -82,7 +82,19 @@ function Form () {
                             {education ? <FaChevronUp /> : <FaChevronDown />} 
                     </div>
                     {
+                        !education &&
+                        educationexp.length > 0 &&
+                        educationexp.map((item)=> {
+                            return (
+                                <>
+                                <h1>{item.School}</h1>
+                                </>
+                            )
+                        })
+                    }
+                    {
                         educationexp.length > 0  && 
+                        education && 
                        educationexp.map((item)=> {
                         return (
                             <EducationForm
@@ -93,7 +105,7 @@ function Form () {
                             Degree = {item.Degree}
                             startDate = {item.startDate}
                             endDate = {item.endDate}
-
+                            setEducation= {setEducation}
                             />
                         )
                        })
@@ -116,6 +128,7 @@ function Form () {
                    </div>
                    {
                     personalexp.length > 0 && 
+                    experience && 
                     personalexp.map((item)=> {
                         return (
                             <PersonalForm

@@ -67,3 +67,24 @@ label{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.reactiveButtons{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.reactiveButtons>button {
+     font-weight: 600;
+    cursor: pointer;
+    color: white;
+    width: 40%;
+    padding: 8px 16px;
+    border-radius: 30px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+}

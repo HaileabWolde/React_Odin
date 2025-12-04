@@ -1,9 +1,12 @@
-function EducationForm ({id, setEducationexp, School,  Degree, startDate, endDate}){
+function EducationForm ({id, setEducationexp, School,  Degree, startDate, endDate, setEducation}){
      const handleChange = (e)=> {
           const {name, value} = e.target;
           setEducationexp(prev=> prev.map(
                (item) => item.id === id ? {...item, [name]: value} : item
           ))
+     }
+     const saveChange = ()=> {
+          setEducation(false)
      }
 return (
      <>
@@ -49,7 +52,14 @@ return (
                        value={endDate}
                        onChange={handleChange}
                        ></input>
-                      
+                      <div className="reactiveButtons">
+                              <button className="saveButton" onClick={saveChange}>
+                                   Save
+                              </button>
+                              <button className="deleteButton">
+                                   Delete
+                              </button>
+                      </div>
                 
                             </>
 )
