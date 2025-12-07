@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import '../styles/Form.css'
-import { FaGraduationCap, FaChevronDown, FaChevronUp,  FaSuitcase, FaTrash, FaPlus} from 'react-icons/fa';
+import { FaGraduationCap, FaChevronDown, FaChevronUp,  FaSuitcase, FaTrash, FaPlus, FaEdit} from 'react-icons/fa';
 
 import EducationForm from './Form/EducationForm';
 import PersonalForm from './Form/PersonalForm.JSX';
+
 function Form () {
     const [education, setEducation] = useState(true);
     const [experience, setExperience] = useState(true);
     const [educationexp, setEducationexp] = useState([]);
     const [personalexp, setPersonalexp] = useState([]);
+    const [editEduc, seteditEduc] = useState(null)
     const handleEducation = ()=>{
         setEducation((prev)=> !prev)
     }
@@ -43,6 +45,16 @@ function Form () {
 
          ])
     }
+    const editEdcSection = (id)=>{
+      seteditEduc(id);
+    }
+   const styleeducSection = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    
+
+   }
     return (
         <div className="Form">
             <div className='clearResume'>
@@ -84,13 +96,24 @@ function Form () {
                     {
                         !education &&
                         educationexp.length > 0 &&
-                        educationexp.map((item)=> {
-                            return (
-                                <>
+                        educationexp.map((item)=> item.id != editEduc ? 
+                         (  <div style={ styleeducSection }>
                                 <h1>{item.School}</h1>
-                                </>
-                            )
-                        })
+                                <FaEdit size={24} onClick={()=> editEdcSection(item.id)}/>
+                                </div>): (
+                                  
+                                     <EducationForm
+                            key={item.id}
+                             id={item.id}             // <-- important
+                            setEducationexp= {setEducationexp}
+                            School= {item.School}
+                            Degree = {item.Degree}
+                            startDate = {item.startDate}
+                            endDate = {item.endDate}
+                            setEducation= {setEducation}
+                            seteditEduc={seteditEduc}
+                            />
+                                ))
                     }
                     {
                         educationexp.length > 0  && 

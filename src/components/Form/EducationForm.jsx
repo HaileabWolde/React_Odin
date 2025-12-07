@@ -1,12 +1,14 @@
-function EducationForm ({id, setEducationexp, School,  Degree, startDate, endDate, setEducation}){
+function EducationForm ({id, setEducationexp, School,  Degree, startDate, endDate, setEducation,  seteditEduc}){
      const handleChange = (e)=> {
           const {name, value} = e.target;
           setEducationexp(prev=> prev.map(
                (item) => item.id === id ? {...item, [name]: value} : item
           ))
      }
-     const saveChange = ()=> {
-          setEducation(false)
+     const saveChange = (event)=> {
+          event.preventDefault();
+          setEducation(false);
+          seteditEduc(null);
      }
 return (
      <>
