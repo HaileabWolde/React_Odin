@@ -5,6 +5,14 @@ function EducationForm ({id, setEducationexp, School,  Degree, startDate, endDat
                (item) => item.id === id ? {...item, [name]: value} : item
           ))
      }
+     const deleteChange = (event, id)=> {
+          event.preventDefault();
+          setEducation(false);
+          seteditEduc(null);
+          setEducationexp(prev => prev.filter(
+               (item) => item.id != id
+          ))
+     }
      const saveChange = (event)=> {
           event.preventDefault();
           setEducation(false);
@@ -58,7 +66,7 @@ return (
                               <button className="saveButton" onClick={saveChange}>
                                    Save
                               </button>
-                              <button className="deleteButton">
+                              <button className="deleteButton" onClick={()=> deleteChange(event, id)}>
                                    Delete
                               </button>
                       </div>

@@ -32,7 +32,6 @@ function Form () {
     }
     const addExperience = (event)=> {
          event.preventDefault();
-
          setPersonalexp(prev=> [
             ...prev,{
                 Company: "",
@@ -45,9 +44,10 @@ function Form () {
 
          ])
     }
-    const editEdcSection = (id)=>{
+    const onUpdate = (id)=>{
       seteditEduc(id);
     }
+
    const styleeducSection = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -99,7 +99,7 @@ function Form () {
                         educationexp.map((item)=> item.id != editEduc ? 
                          (  <div style={ styleeducSection }>
                                 <h1>{item.School}</h1>
-                                <FaEdit size={24} onClick={()=> editEdcSection(item.id)}/>
+                                <FaEdit size={24} onClick={()=> onUpdate(item.id)}/>
                                 </div>): (
                                   
                                      <EducationForm
@@ -116,8 +116,8 @@ function Form () {
                                 ))
                     }
                     {
-                        educationexp.length > 0  && 
                         education && 
+                        educationexp.length > 0  &&  
                        educationexp.map((item)=> {
                         return (
                             <EducationForm
