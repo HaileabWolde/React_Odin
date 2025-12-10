@@ -7,13 +7,19 @@ import { FaGraduationCap, FaChevronDown, FaChevronUp,
 import EducationForm from './Form/EducationForm';
 import PersonalForm from './Form/PersonalForm.JSX';
 
-function Form () {
+function Form ({ personalInfo, setPersonalInfo}) {
     const [education, setEducation] = useState(true);
     const [experience, setExperience] = useState(true);
     const [educationexp, setEducationexp] = useState([]);
     const [personalexp, setPersonalexp] = useState([]);
     const [editEduc, seteditEduc] = useState(null);
     const [editExp, seteditExp] = useState(null);
+
+    const handlChange = (e)=> {
+        const {name, value} = e.target;
+        const newInfo = {...personalInfo, [name]: value}
+        setPersonalInfo(newInfo)
+    }
     const handleEducation = ()=>{
         setEducation((prev)=> !prev)
     }
@@ -76,22 +82,42 @@ function Form () {
                    <label for="fullName">
                     FullName
                    </label>
-                   <input type='text' placeholder='Enter Your Full Name'>
+                   <input 
+                   type='text' 
+                   name='fullName'
+                   placeholder='Enter Your Full Name'
+                   onChange={handlChange}
+                   >
                    </input>
                    <label for="Email">
                     Email
                    </label>
-                   <input type='email' placeholder='you@example.com'>
+                   <input 
+                   type='email'
+                   name='Email' 
+                   placeholder='you@example.com'
+                     onChange={handlChange}
+                   >
                    </input>
                    <label for="PhoneNumber">
                     Phone Number
                    </label>
-                   <input type='tel' placeholder='Enter Your Phone Number'>
+                   <input 
+                   type='tel'
+                   name='PhoneNumber' 
+                   placeholder='Enter Your Phone Number'
+                     onChange={handlChange}
+                   >
                    </input>
                    <label for="Address">
                     Address
                    </label>
-                   <input type='text' placeholder='City, Country'>
+                   <input 
+                   type='text'
+                   name='Address' 
+                   placeholder='City, Country'
+                     onChange={handlChange}
+                   >
                    </input>
                    
             </form>
