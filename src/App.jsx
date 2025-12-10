@@ -10,15 +10,23 @@ function App() {
   PhoneNumber: "",
   Address: "",
  })
+  const [educationexp, setEducationexp] = useState([]);
+  const [personalexp, setPersonalexp] = useState([]);
   return (
    <>
    <CV/>
   <Form
   personalInfo= {personalInfo}
   setPersonalInfo={setPersonalInfo}
+  educationexp= {educationexp}
+  setEducationexp = {setEducationexp}
+  personalexp = {personalexp}
+  setPersonalexp = {setPersonalexp}
   />
   <Display
   personalInfo={personalInfo}
+  educationexp= {educationexp}
+  setEducationexp = {setEducationexp}
   />
    </>
   )

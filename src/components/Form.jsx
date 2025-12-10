@@ -7,11 +7,9 @@ import { FaGraduationCap, FaChevronDown, FaChevronUp,
 import EducationForm from './Form/EducationForm';
 import PersonalForm from './Form/PersonalForm.JSX';
 
-function Form ({ personalInfo, setPersonalInfo}) {
+function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, personalexp,  setPersonalexp}) {
     const [education, setEducation] = useState(true);
     const [experience, setExperience] = useState(true);
-    const [educationexp, setEducationexp] = useState([]);
-    const [personalexp, setPersonalexp] = useState([]);
     const [editEduc, seteditEduc] = useState(null);
     const [editExp, seteditExp] = useState(null);
 
