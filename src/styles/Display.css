@@ -35,3 +35,12 @@
      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
      text-align: center;
 }
+.eachEduc{
+    display: flex;
+    justify-content: space-around; 
+}
+.dateSection{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}

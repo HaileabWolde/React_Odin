@@ -41,6 +41,22 @@ function Display ({personalInfo, educationexp, setEducationexp}){
                                 <h1>Education</h1>
                             </div>
                         }
+                        {
+                            educationexp.map((item)=> (
+                                (<div className='eachEduc'>
+                                    <div className='detailEdu'>
+                                        <p>{item.School}</p>
+                                        <p>{item.Degree}</p>
+                                    </div>
+                                    <div className='dateSection'>
+                                        <p>{item.startDate} to </p>
+                                        <p>{item.endDate}</p>
+                                    </div>
+                                    
+                                  
+                                </div>)
+                            ))
+                        }
             </div>
          </div>
 
