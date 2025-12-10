@@ -5,7 +5,7 @@ import { FaGraduationCap, FaChevronDown, FaChevronUp,
     FaEdit, FaDownload} from 'react-icons/fa';
 
 import EducationForm from './Form/EducationForm';
-import PersonalForm from './Form/PersonalForm.JSX';
+import PersonalForm from './Form/PersonalForm';
 
 function Form ({ personalInfo, setPersonalInfo, educationexp,  
     setEducationexp, personalexp,  setPersonalexp,
