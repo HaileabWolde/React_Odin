@@ -27,6 +27,8 @@ function App() {
   personalInfo={personalInfo}
   educationexp= {educationexp}
   setEducationexp = {setEducationexp}
+  personalexp= {personalexp}
+  
   />
    </>
   )
