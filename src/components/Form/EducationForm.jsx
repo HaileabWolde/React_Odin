@@ -8,7 +8,6 @@ function EducationForm ({id, setEducationexp, School,  Degree, startDate, endDat
      const deleteChange = (event, id)=> {
           event.preventDefault();
           setEducation(false);
-          seteditEduc(null);
           setEducationexp(prev => prev.filter(
                (item) => item.id != id
           ))

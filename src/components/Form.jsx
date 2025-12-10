@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import '../styles/Form.css'
-import { FaGraduationCap, FaChevronDown, FaChevronUp,  FaSuitcase, FaTrash, FaPlus, FaEdit} from 'react-icons/fa';
+import { FaGraduationCap, FaChevronDown, FaChevronUp,  
+    FaSuitcase, FaTrash, FaPlus, 
+    FaEdit, FaDownload} from 'react-icons/fa';
 
 import EducationForm from './Form/EducationForm';
 import PersonalForm from './Form/PersonalForm.JSX';
@@ -10,7 +12,8 @@ function Form () {
     const [experience, setExperience] = useState(true);
     const [educationexp, setEducationexp] = useState([]);
     const [personalexp, setPersonalexp] = useState([]);
-    const [editEduc, seteditEduc] = useState(null)
+    const [editEduc, seteditEduc] = useState(null);
+    const [editExp, seteditExp] = useState(null);
     const handleEducation = ()=>{
         setEducation((prev)=> !prev)
     }
@@ -47,7 +50,9 @@ function Form () {
     const onUpdate = (id)=>{
       seteditEduc(id);
     }
-
+    const onUpdateExp = (id)=> {
+       seteditExp(id);
+    }
    const styleeducSection = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -62,7 +67,9 @@ function Form () {
                     <FaTrash color='red' fontSize={20}/>
                     Clear Resume
                     </span>
-                    <p>Load an Example</p>
+                   <button className='downloadButton'>
+                    <FaDownload /> <p> Download </p>
+                   </button>
             </div>
             <form className='personalDetails'>
                    <h1>Personal Details</h1>
@@ -94,7 +101,7 @@ function Form () {
                             {education ? <FaChevronUp /> : <FaChevronDown />} 
                     </div>
                     {
-                        !education &&
+                        !education &&  
                         educationexp.length > 0 &&
                         educationexp.map((item)=> item.id != editEduc ? 
                          (  <div style={ styleeducSection }>
@@ -149,13 +156,17 @@ function Form () {
                            <span> <FaSuitcase size={20} fontWeight={900} /> Expreience</span>
                              {experience ? <FaChevronUp /> : <FaChevronDown />} 
                    </div>
-                   {
-                    personalexp.length > 0 && 
-                    experience && 
-                    personalexp.map((item)=> {
-                        return (
-                            <PersonalForm
-                              key={item.id}
+                    {
+                        !experience &&  
+                       personalexp.length > 0 &&
+                        personalexp.map((item)=> item.id != editExp ? 
+                         (  <div style={ styleeducSection }>
+                                <h1>{item.Company}</h1>
+                                <FaEdit size={24} onClick={()=> onUpdateExp(item.id)}/>
+                                </div>): (
+                                  
+                                     <PersonalForm
+                             key={item.id}
                              id={item.id}     
                              setPersonalexp= {setPersonalexp}
                              Company = {item.Company}
@@ -163,6 +174,27 @@ function Form () {
                              startDate = {item.startDate}
                              endDate = {item.endDate}
                              Description = {item.Description}
+                             setExperience = {setExperience}
+                             seteditExp = {seteditExp}
+                            />
+                                ))
+                    }
+                   {
+                    personalexp.length > 0 && 
+                    experience && 
+                    personalexp.map((item)=> {
+                        return (
+                             <PersonalForm
+                             key={item.id}
+                             id={item.id}     
+                             setPersonalexp= {setPersonalexp}
+                             Company = {item.Company}
+                             Position = {item.Position}
+                             startDate = {item.startDate}
+                             endDate = {item.endDate}
+                             Description = {item.Description}
+                             setExperience = {setExperience}
+                             seteditExp = {seteditExp}
                             />
                         )
                     })

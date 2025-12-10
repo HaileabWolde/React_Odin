@@ -1,4 +1,4 @@
-function PersonalForm ({id, setPersonalexp, Company, Position, startDate, endDate, Description}){
+function PersonalForm ({id, setPersonalexp, Company, Position, startDate, endDate, Description, setExperience, seteditExp}){
 
     const handleChange = (e)=>{
         const {name, value} = e.target;
@@ -6,6 +6,18 @@ function PersonalForm ({id, setPersonalexp, Company, Position, startDate, endDat
             ...item, 
             [name]: value
         }: item))
+    }
+    const saveChange = (event)=> {
+        event.preventDefault();
+         setExperience(false);
+        seteditExp(null);
+    }
+    const deleteChange = (event, id)=> {
+         event.preventDefault();
+         setExperience(false);
+         setPersonalexp(prev => prev.filter(
+               (item) => item.id != id
+          ))
     }
     return (
          <>
@@ -57,6 +69,14 @@ function PersonalForm ({id, setPersonalexp, Company, Position, startDate, endDat
                   value={Description}
                   onChange={handleChange}  
                   rows="5" cols="50"></textarea>
+                   <div className="reactiveButtons">
+                              <button className="saveButton" onClick={saveChange}>
+                                   Save
+                              </button>
+                              <button className="deleteButton" onClick={()=> deleteChange(event, id)}>
+                                   Delete
+                              </button>
+                      </div>
                     </>
     )
 }
