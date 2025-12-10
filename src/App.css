@@ -12,3 +12,11 @@ h1{
 .Cv, .Display{
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
+.Cv{
+  min-height: 20%;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

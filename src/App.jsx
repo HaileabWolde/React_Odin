@@ -12,6 +12,7 @@ function App() {
  })
   const [educationexp, setEducationexp] = useState([]);
   const [personalexp, setPersonalexp] = useState([]);
+   const [photoPreview, setPhotoPreview] = useState(null);
   return (
    <>
    <CV/>
@@ -22,13 +23,15 @@ function App() {
   setEducationexp = {setEducationexp}
   personalexp = {personalexp}
   setPersonalexp = {setPersonalexp}
+  setPhotoPreview = {setPhotoPreview}
   />
   <Display
   personalInfo={personalInfo}
   educationexp= {educationexp}
   setEducationexp = {setEducationexp}
   personalexp= {personalexp}
-  
+  photoPreview = {photoPreview}
+  setPhotoPreview = {setPhotoPreview}
   />
    </>
   )

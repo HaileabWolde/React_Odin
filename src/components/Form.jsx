@@ -7,12 +7,15 @@ import { FaGraduationCap, FaChevronDown, FaChevronUp,
 import EducationForm from './Form/EducationForm';
 import PersonalForm from './Form/PersonalForm.JSX';
 
-function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, personalexp,  setPersonalexp}) {
+function Form ({ personalInfo, setPersonalInfo, educationexp,  
+    setEducationexp, personalexp,  setPersonalexp,
+    setPhotoPreview
+}) {
     const [education, setEducation] = useState(true);
     const [experience, setExperience] = useState(true);
     const [editEduc, seteditEduc] = useState(null);
     const [editExp, seteditExp] = useState(null);
-
+    
     const handlChange = (e)=> {
         const {name, value} = e.target;
         const newInfo = {...personalInfo, [name]: value}
@@ -21,8 +24,21 @@ function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, 
     const handleEducation = ()=>{
         setEducation((prev)=> !prev)
     }
+
     const handleExerience = ()=>{
         setExperience((prev)=> !prev)
+    }
+
+    const clearResume = ()=> {
+        setPersonalInfo({
+           fullName: "",
+          Email: "",
+        PhoneNumber: "",
+       Address: "",  
+        })
+        setPhotoPreview(null)
+        setEducationexp([])
+        setPersonalexp([])
     }
 
     const addEducation = (event)=>{
@@ -67,8 +83,8 @@ function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, 
     return (
         <div className="Form">
             <div className='clearResume'>
-                    <span>
-                    <FaTrash color='red' fontSize={20}/>
+                    <span onClick={clearResume}>
+                    <FaTrash color='red' fontSize={20} />
                     Clear Resume
                     </span>
                    <button className='downloadButton'>
@@ -83,6 +99,7 @@ function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, 
                    <input 
                    type='text' 
                    name='fullName'
+                   value={personalInfo.fullName}
                    placeholder='Enter Your Full Name'
                    onChange={handlChange}
                    >
@@ -93,6 +110,7 @@ function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, 
                    <input 
                    type='email'
                    name='Email' 
+                   value={personalInfo.Email}
                    placeholder='you@example.com'
                      onChange={handlChange}
                    >
@@ -104,6 +122,7 @@ function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, 
                    type='tel'
                    name='PhoneNumber' 
                    placeholder='Enter Your Phone Number'
+                   value={personalInfo.PhoneNumber}
                      onChange={handlChange}
                    >
                    </input>
@@ -114,6 +133,7 @@ function Form ({ personalInfo, setPersonalInfo, educationexp,  setEducationexp, 
                    type='text'
                    name='Address' 
                    placeholder='City, Country'
+                   value={personalInfo.Address}
                      onChange={handlChange}
                    >
                    </input>

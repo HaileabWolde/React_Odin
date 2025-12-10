@@ -1,12 +1,12 @@
 import '../styles/Display.css';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { FaEnvelope, FaPhone, FaUserCircle } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 
-function Display({ personalInfo, educationexp, personalexp }) {
+function Display({ personalInfo, educationexp, personalexp,  photoPreview ,  setPhotoPreview}) {
   const { fullName, Email, PhoneNumber, Address } = personalInfo;
 
-  const [photoPreview, setPhotoPreview] = useState(null);
+  
 
   // Hidden file input ref
   const fileInputRef = useRef(null);

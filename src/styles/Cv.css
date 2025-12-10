@@ -1,3 +1,8 @@
 .Cv{
     height: 10%;
+    display: flex;
+    flex-direction: column;
+}
+.cv-icon {
+    height: 20%;
 }
